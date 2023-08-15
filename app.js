@@ -9,12 +9,23 @@ app.use(express.json());
 app.use(cors());
 app.use("/books", router); // localhost:5000/books
 
+// mongoose
+//   .connect(
+//     "mongodb+srv://shubhampatil:Shubham@cluster0.u0izivu.mongodb.net/?retryWrites=true&w=majority"
+//   )
+//   .then(() => console.log("Connected To Database"))
+//   .then(() => {
+//     app.listen(5000);
+//   })
+//   .catch((err) => console.log(err));
+
+
 mongoose
   .connect(
     "mongodb+srv://shubhampatil:Shubham@cluster0.u0izivu.mongodb.net/?retryWrites=true&w=majority"
   )
-  .then(() => console.log("Connected To Database"))
-  .then(() => {
-    app.listen(5000);
-  })
+  .then(() => app.listen(5000))
+  .then(() =>
+    console.log("Connected TO Database and Listening TO Localhost 5000")
+  )
   .catch((err) => console.log(err));
